@@ -22,6 +22,14 @@ class TrackResource extends Resource
                 ->maxLength(255),
             Forms\Components\TextInput::make('location')
                 ->maxLength(255),
+            Forms\Components\TextInput::make('length')
+                ->numeric()
+                ->label('Length (km)')
+                ->rules('numeric|min:0'),
+            Forms\Components\Textarea::make('ai_metadata')
+                ->label('AI Metadata')
+                ->rows(5)
+                ->columnSpan('full'),
         ]);
     }
 

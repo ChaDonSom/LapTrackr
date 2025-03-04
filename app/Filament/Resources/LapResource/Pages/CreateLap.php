@@ -8,7 +8,7 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateLap extends CreateRecord
 {
     protected static string $resource = LapResource::class;
-    
+
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         $data['user_id'] = auth()->id();

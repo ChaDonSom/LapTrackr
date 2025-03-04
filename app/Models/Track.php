@@ -17,7 +17,8 @@ class Track extends Model
 
     protected $casts = [
         'ai_metadata' => AsArrayObject::class,
-        'ai_enriched' => 'boolean'
+        'ai_enriched' => 'boolean',
+        'length' => 'decimal:3'
     ];
 
     protected $appends = [
@@ -64,5 +65,12 @@ class Track extends Model
     public function getElevationChangeAttribute()
     {
         return $this->ai_metadata['elevation_change_meters'] ?? null;
+    }
+
+    public static function rules()
+    {
+        return [
+            'ai_metadata.length_km' => 'numeric|min:0',
+        ];
     }
 }

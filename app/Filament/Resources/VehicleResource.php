@@ -41,6 +41,10 @@ class VehicleResource extends Resource
             Forms\Components\Select::make('drive_type')
                 ->options(['FWD' => 'FWD', 'AWD' => 'AWD', 'RWD' => 'RWD'])
                 ->required(),
+            Forms\Components\Textarea::make('ai_metadata')
+                ->label('AI Metadata')
+                ->rows(5)
+                ->columnSpan('full'),
         ]);
     }
 
