@@ -2,16 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Public welcome page
 Route::get('/', function () {
+    if (auth()->check()) {
+        return redirect('/admin');
+    }
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+// Redirect /dashboard to admin panel (for Jetstream default redirects)
+Route::get('/dashboard', function () {
+    return redirect('/admin');
+})->middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']);
