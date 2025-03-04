@@ -17,13 +17,24 @@ class VehicleResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            Forms\Components\TextInput::make('make')->required(),
-            Forms\Components\TextInput::make('model')->required(),
+            Forms\Components\TextInput::make('make')
+                ->required()
+                ->maxLength(255),
+            Forms\Components\TextInput::make('model')
+                ->required()
+                ->maxLength(255),
             Forms\Components\Select::make('game')
                 ->options(Vehicle::$knownGames)
-                ->allowInput() // Allows custom game entries
                 ->searchable()
-                ->required(),
+                ->preload()
+                ->required()
+                ->createOptionAction(
+                    fn(Forms\Components\Actions\Action $action) => $action->form([
+                        Forms\Components\TextInput::make('value')
+                            ->label('Game')
+                            ->required()
+                    ])
+                ),
             Forms\Components\Select::make('transmission')
                 ->options(['manual' => 'Manual', 'auto' => 'Auto'])
                 ->required(),
@@ -39,10 +50,10 @@ class VehicleResource extends Resource
             Tables\Columns\TextColumn::make('make')->searchable(),
             Tables\Columns\TextColumn::make('model')->searchable(),
             Tables\Columns\TextColumn::make('game')->searchable(),
-            Tables\Columns\TextColumn::make('getYear')->label('Year'),
-            Tables\Columns\TextColumn::make('getPower')->label('Power (HP)'),
-            Tables\Columns\TextColumn::make('getWeight')->label('Weight (kg)'),
-            Tables\Columns\TextColumn::make('getTireSize')->label('Tire Size'),
+            Tables\Columns\TextColumn::make('year'),
+            Tables\Columns\TextColumn::make('power')->label('Power (HP)'),
+            Tables\Columns\TextColumn::make('weight')->label('Weight (kg)'),
+            Tables\Columns\TextColumn::make('tire_size')->label('Tire Size'),
             Tables\Columns\IconColumn::make('ai_enriched')
                 ->boolean()
                 ->label('AI Enhanced'),

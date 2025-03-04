@@ -23,6 +23,14 @@ class Vehicle extends Model
         'ai_enriched' => 'boolean'
     ];
 
+    protected $appends = [
+        'year',
+        'power',
+        'weight',
+        'tire_size',
+        'common_mods'
+    ];
+
     /**
      * List of known games that can be used as default options
      */
@@ -50,28 +58,28 @@ class Vehicle extends Model
         return $this->hasMany(Lap::class);
     }
 
-    // Helper methods to access AI metadata
-    public function getYear()
+    // Helper methods as attributes
+    public function getYearAttribute()
     {
         return $this->ai_metadata['year'] ?? null;
     }
 
-    public function getPower()
+    public function getPowerAttribute()
     {
         return $this->ai_metadata['power_hp'] ?? null;
     }
 
-    public function getWeight()
+    public function getWeightAttribute()
     {
         return $this->ai_metadata['weight_kg'] ?? null;
     }
 
-    public function getTireSize()
+    public function getTireSizeAttribute()
     {
         return $this->ai_metadata['typical_tire_size'] ?? null;
     }
 
-    public function getCommonMods()
+    public function getCommonModsAttribute()
     {
         return $this->ai_metadata['common_modifications'] ?? null;
     }

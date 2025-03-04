@@ -20,6 +20,14 @@ class Track extends Model
         'ai_enriched' => 'boolean'
     ];
 
+    protected $appends = [
+        'direction',
+        'length',
+        'number_of_turns',
+        'surface_type',
+        'elevation_change'
+    ];
+
     protected static function booted()
     {
         static::created(function ($track) {
@@ -32,28 +40,28 @@ class Track extends Model
         return $this->hasMany(Lap::class);
     }
 
-    // Helper methods to access AI metadata
-    public function getDirection()
+    // Helper methods to access AI metadata as attributes
+    public function getDirectionAttribute()
     {
         return $this->ai_metadata['direction'] ?? null;
     }
 
-    public function getLength()
+    public function getLengthAttribute()
     {
         return $this->ai_metadata['length_km'] ?? null;
     }
 
-    public function getNumberOfTurns()
+    public function getNumberOfTurnsAttribute()
     {
         return $this->ai_metadata['number_of_turns'] ?? null;
     }
 
-    public function getSurfaceType()
+    public function getSurfaceTypeAttribute()
     {
         return $this->ai_metadata['surface_type'] ?? null;
     }
 
-    public function getElevationChange()
+    public function getElevationChangeAttribute()
     {
         return $this->ai_metadata['elevation_change_meters'] ?? null;
     }

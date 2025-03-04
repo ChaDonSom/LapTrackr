@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('make');
             $table->string('model');
             $table->string('game');  // Changed from enum to string
+            $table->string('transmission');
+            $table->string('drive_type');
             $table->integer('year')->nullable();
             $table->integer('power')->nullable()->comment('Power in HP');
             $table->decimal('weight', 8, 2)->nullable()->comment('Weight in kg');
