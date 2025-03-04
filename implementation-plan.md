@@ -24,7 +24,7 @@ Below is the finalized, cohesive technical specification and implementation plan
 
 **Step-by-Step Implementation Plan**
 
-**Step 1: Project Setup**
+**✅ Step 1: Project Setup** (COMPLETED)
 
 **Goal**: Bootstrap Laravel with required packages.**Duration**: 1-2 hours**Instructions**:
 
@@ -250,7 +250,7 @@ return $form->schema([
 Forms\Components\TextInput::make('make')->required(),
 Forms\Components\TextInput::make('model')->required(),
 Forms\Components\Select::make('transmission')->options(['manual' => 'Manual', 'auto' => 'Auto'])->required(),
-Forms\Components\Select::make('drive_type')->options(['FWD' => 'FWD', 'AWD' => 'AWD', 'RWD' => 'RWD'])->required(),
+Forms\Components\Select::make('drive_type')->options(['FWD' => 'FWD', 'AWD' => 'AWD', 'RWD'])->required(),
 Forms\Components\Select::make('game')->options(['beamng.drive' => 'BeamNG.drive', 'assetto_corsa' => 'Assetto Corsa', 'real_life' => 'Real Life'])->required(),
 ]);
 }
@@ -327,7 +327,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use TesseractOCR;
+use thiagoalessio\TesseractOCR\TesseractOCR;
 
 class LapUploader extends Component
 {
