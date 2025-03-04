@@ -23,6 +23,21 @@ class Vehicle extends Model
         'ai_enriched' => 'boolean'
     ];
 
+    /**
+     * List of known games that can be used as default options
+     */
+    public static $knownGames = [
+        'beamng.drive' => 'BeamNG.drive',
+        'assetto_corsa' => 'Assetto Corsa',
+        'real_life' => 'Real Life',
+        'iracing' => 'iRacing',
+        'project_cars_2' => 'Project CARS 2',
+        'acc' => 'Assetto Corsa Competizione',
+        'forza_motorsport' => 'Forza Motorsport',
+        'gran_turismo_7' => 'Gran Turismo 7',
+        'rfactor_2' => 'rFactor 2'
+    ];
+
     protected static function booted()
     {
         static::created(function ($vehicle) {
