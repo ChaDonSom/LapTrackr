@@ -199,7 +199,7 @@ public function vehicle() { return $this->belongsTo(Vehicle::class); }
 php artisan migrate
 ```
 
-**Step 4: CRUD with Filament**
+✅ **Step 4: CRUD with Filament**
 
 **Goal**: Build list views and forms for Tracks, Vehicles, and Laps using Filament.**Duration**: 5-6 hours**Instructions**:
 
