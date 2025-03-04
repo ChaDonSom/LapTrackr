@@ -122,7 +122,7 @@ return redirect('/admin');
 
 4. Test: Run php artisan serve, visit /login, register a user, and ensure redirect to /admin.
 
-**Step 3: Database Schema**
+✅ **Step 3: Database Schema**
 
 **Goal**: Define models and migrations for Tracks, Vehicles, and Laps.**Duration**: 2-3 hours**Instructions**:
 
